@@ -12,8 +12,8 @@
 using namespace std;
 
 typedef struct condition{
-	int columnid; //±íÊ¾°´µÚ¼¸ÁĞÀ´ÅÅĞò 
-	int asc; //1±íÊ¾ÉıĞò£¬0±íÊ¾½µĞò 
+	int columnid; //è¡¨ç¤ºæŒ‰ç¬¬å‡ åˆ—æ¥æ’åº 
+	int asc; //1è¡¨ç¤ºå‡åºï¼Œ0è¡¨ç¤ºé™åº 
 }condition;
 
 class StockItem{
@@ -88,9 +88,9 @@ class StockArray{
 		const int getlen(){
 			return len;
 		}
-		void singlesort(string strcondition){ // ÀıÈç£º1,1|0,1
-			//¹¹Ôì±È½ÏÌõ¼ş
-			list = vector<condition>(); //ÏÈÇå¿Õ 
+		void singlesort(string strcondition){ // ä¾‹å¦‚ï¼š1,1|0,1
+			//æ„é€ æ¯”è¾ƒæ¡ä»¶
+			list = vector<condition>(); //å…ˆæ¸…ç©º 
 			stringstream ss(strcondition);
 			char comma;
 			string temp;
@@ -219,7 +219,7 @@ void StockItem::input(std::ifstream &in){
 	in >> oneline;
 	std::stringstream strm(oneline);
 	string token[8];
-	for(int i = 0; i < 8; i++){ //°ÑÁ÷°´·Ö¸ô·ûÊµÏÖ·Ö¸î 
+	for(int i = 0; i < 8; i++){ //æŠŠæµæŒ‰åˆ†éš”ç¬¦å®ç°åˆ†å‰² 
 		getline(strm,token[i],',');
 	}
 	if(token[0] != ""){
@@ -297,7 +297,7 @@ struct item_in_queue
 	item_in_queue(StockItem it, string filen, string strcondition){
 		item = it;
 		filename = filen;
-		list = vector<condition>(); //ÏÈÇå¿Õ 
+		list = vector<condition>(); //å…ˆæ¸…ç©º 
 		stringstream ss(strcondition);
 		char comma;
 		string temp;
@@ -350,7 +350,7 @@ struct item_in_queue
 				break;
 			};
 		}
-		return comp>0; //Ğ¡¶¥¶Ñ 
+		return comp>0; //å°é¡¶å † 
 	}
 };
 
@@ -496,7 +496,7 @@ void SortManager::merge(vector<int> filenamelist){
 } 
 
 void SortManager::merge_sort(){
-	while(filelist.size() > 1){ //Èç¹û×îºóÖ»ÓĞÒ»¸ö×ÜµÄÎÄ¼ş·Å½øÀ´ÁË£¬ÄÇÃ´¾ÍÍË³öÑ­»· 
+	while(filelist.size() > 1){ //å¦‚æœæœ€ååªæœ‰ä¸€ä¸ªæ€»çš„æ–‡ä»¶æ”¾è¿›æ¥äº†ï¼Œé‚£ä¹ˆå°±é€€å‡ºå¾ªç¯ 
 		vector<int> v;
 		for(int i = 0; i < way; i++){
 			v.push_back(filelist.front());
@@ -505,7 +505,7 @@ void SortManager::merge_sort(){
 				filelist.pop();
 			}
 		}
-		merge(v); //¹é²¢¼¸¸öĞ¡ÎÄ¼ş£¬²¢°ÑĞÂ²úÉúµÄÎÄ¼ş¼ÓÈëÁĞ±íÖĞ 
+		merge(v); //å½’å¹¶å‡ ä¸ªå°æ–‡ä»¶ï¼Œå¹¶æŠŠæ–°äº§ç”Ÿçš„æ–‡ä»¶åŠ å…¥åˆ—è¡¨ä¸­ 
 	}
 	for(int i = low; i < high-1; i++){
 		string file = to_string(i)+".csv";
@@ -562,7 +562,7 @@ void IndexNode::input(std::ifstream &in){
 	in >> oneline;
 	std::stringstream strm(oneline);
 	string token[3];
-	for(int i = 0; i < 3; i++){ //°ÑÁ÷°´·Ö¸ô·ûÊµÏÖ·Ö¸î 
+	for(int i = 0; i < 3; i++){ //æŠŠæµæŒ‰åˆ†éš”ç¬¦å®ç°åˆ†å‰² 
 		getline(strm,token[i],',');
 	}
 	if(token[0] != ""){
